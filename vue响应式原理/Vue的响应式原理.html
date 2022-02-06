@@ -44,11 +44,13 @@
       //#endregion
 
       // 模拟Vue3中实现响应式
+      //#region
       const p = new Proxy(person, {
         // 读取时调用
         get(target, propName) {
           console.log(`有人读取了p身上的${propName}属性的值。。。`)
-          return target[propName]
+          // return target[propName]
+          return Reflect.get(target, propName)
         },
         // 新增或修改时调用
         set(target, propName, value) {
@@ -57,14 +59,58 @@
           } else {
             console.log(`有人在p身上添加了${propName}属性，我要去更新页面了！`)
           }
-          target[propName] = value
+          // target[propName] = value
+          Reflect.set(target, propName, value)
         },
         // 删除时调用
         deleteProperty(target, propName) {
           console.log(`有人删除了p身上的${propName}属性的值，我要去更新页面了！`)
-          return delete target[propName]
+          // return delete target[propName]
+          return Reflect.deleteProperty(target, propName)
         }
       })
+      //#endregion
+
+      // let obj = { a: 1, b: 2 }
+      // 通过Object.defineProperty去操作
+      //#region
+      /* try {
+        Object.defineProperty(obj, 'c', {
+          get() {
+            return 3
+          }
+        })
+        Object.defineProperty(obj, 'c', {
+          get() {
+            return 4
+          }
+        })
+      } catch (error) {
+        console.log(error)
+      } */
+      //#endregion
+
+      // 通过Reflect.defineProperty去操作
+      //#region
+      /* const x1 = Reflect.defineProperty(obj, 'c', {
+        get() {
+          return 3
+        }
+      })
+      console.log(x1)
+      const x2 = Reflect.defineProperty(obj, 'c', {
+        get() {
+          return 4
+        }
+      })
+      if (x2) {
+        console.log('某某某操作成功了！')
+      } else {
+        console.log('某某某操作失败了！')
+      } */
+      //#endregion
+
+      // console.log('@@@@@', obj)
     </script>
   </body>
 </html>
