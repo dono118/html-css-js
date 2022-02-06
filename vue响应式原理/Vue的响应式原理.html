@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue的响应式原理</title>
+  </head>
+
+  <body>
+    <script>
+      // 源数据
+      let person = {
+        name: '张三',
+        age: 18
+      }
+
+      // 模拟Vue2中实现响应式
+      //#region
+      /* let p = {}
+      Object.defineProperty(p, 'name', {
+        configurable: true,
+        // 读取时调用
+        get() {
+          return person.name
+        },
+        // 修改时调用
+        set(value) {
+          console.log('有人修改了name属性的值，我要去更新页面了！')
+          person.name = value
+        }
+      })
+      Object.defineProperty(p, 'age', {
+        // 读取时调用
+        get() {
+          return person.age
+        },
+        // 修改时调用
+        set(value) {
+          console.log('有人修改了age属性的值，我要去更新页面了！')
+          person.age = value
+        }
+      }) */
+      //#endregion
+
+      // 模拟Vue3中实现响应式
+      const p = new Proxy(person, {
+        // 读取时调用
+        get(target, propName) {
+          console.log(`有人读取了p身上的${propName}属性的值。。。`)
+          return target[propName]
+        },
+        // 新增或修改时调用
+        set(target, propName, value) {
+          if (target.hasOwnProperty(propName)) {
+            console.log(`有人修改了p身上的${propName}属性的值，我要去更新页面了！`)
+          } else {
+            console.log(`有人在p身上添加了${propName}属性，我要去更新页面了！`)
+          }
+          target[propName] = value
+        },
+        // 删除时调用
+        deleteProperty(target, propName) {
+          console.log(`有人删除了p身上的${propName}属性的值，我要去更新页面了！`)
+          return delete target[propName]
+        }
+      })
+    </script>
+  </body>
+</html>
