@@ -1,23 +1,27 @@
-function defineReactive(data, key, val) {
-  observe(val); // 递归遍历所有子属性
-  Object.defineProperty(data, key, {
+function defineReactive(target, key, val) {
+  observe(val) // 递归遍历所有子属性
+  Object.defineProperty(target, key, {
     enumerable: true,
     configurable: true,
-    get: function () {
-      return val;
+    get() {
+      return val
     },
-    set: function (newVal) {
-      val = newVal;
-      console.log('属性' + key + '已经被监听了，现在值为：“' + newVal.toString() + '”');
+    set(newVal) {
+      if (newVal === val) return
+      renderView()
+      val = newVal
     }
-  });
+  })
 }
 
-function observe(data) {
-  if (!data || typeof data !== 'object') {
-    return;
+function observe(target) {
+  if (!target || typeof target !== 'object') {
+    return target
   }
-  Object.keys(data).forEach(function (key) {
-    defineReactive(data, key, data[key]);
-  });
-};
+  Object.keys(target).forEach(key => defineReactive(target, key, target[key]))
+}
+
+function renderView() {
+  // 更新视图的方法
+  console.log('视图更新')
+}
