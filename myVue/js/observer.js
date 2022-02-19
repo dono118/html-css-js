@@ -1,27 +1,49 @@
-function defineReactive(target, key, val) {
-  observe(val) // 递归遍历所有子属性
-  Object.defineProperty(target, key, {
-    enumerable: true,
-    configurable: true,
-    get() {
-      return val
-    },
-    set(newVal) {
-      if (newVal === val) return
-      renderView()
-      val = newVal
-    }
-  })
+function Observer(data) {
+  this.walk(data)
 }
-
-function observe(target) {
-  if (!target || typeof target !== 'object') {
-    return target
+Observer.prototype = {
+  walk(data) {
+    Object.keys(data).forEach(key => this.defineReactive(data, key, data[key]))
+  },
+  defineReactive(data, key, val) {
+    let dep = new Dep()
+    observe(val)
+    Object.defineProperty(data, key, {
+      enumerable: true,
+      configurable: true,
+      get() {
+        if (Dep.target) {
+          dep.addSub(Dep.target)
+        }
+        return val
+      },
+      set(newVal) {
+        if (newVal === val) return
+        val = newVal
+        dep.notify()
+      }
+    })
   }
-  Object.keys(target).forEach(key => defineReactive(target, key, target[key]))
 }
 
-function renderView() {
-  // 更新视图的方法
-  console.log('视图更新')
+function observe(value, vm) {
+  if (!value || typeof value !== 'object') {
+    return
+  }
+  return new Observer(value)
 }
+
+function Dep() {
+  this.subs = []
+}
+Dep.prototype = {
+  addSub(sub) {
+    this.subs.push(sub)
+  },
+  notify() {
+    this.subs.forEach(function (sub) {
+      sub.update()
+    })
+  }
+}
+Dep.target = null

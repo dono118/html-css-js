@@ -5,19 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>vue的双向绑定原理及实现</title>
-    <script src="./js/observer.js"></script>
+    <style>
+      #app {
+        margin-top: 50px;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <script>
-      var person = {
-        book: {
-          name: '',
-          price: 99
-        },
-        hobbies: ['抽烟', '喝酒', '烫头']
-      }
-      observe(person)
-      person.book.name = 'vue权威指南'
-    </script>
+    <div id="app">{{name}}</div>
   </body>
+  <script src="./js/observer.js"></script>
+  <script src="./js/watcher.js"></script>
+  <script src="./js/index.js"></script>
+  <script>
+    let ele = document.querySelector('#app')
+    let myVue = new MyVue(
+      {
+        name: 'hello world'
+      },
+      ele,
+      'name'
+    )
+    setTimeout(() => {
+      console.log('name值改变了')
+      myVue.name = 'canfoo'
+    }, 2000)
+  </script>
 </html>
