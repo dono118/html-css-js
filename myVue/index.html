@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta description="viewport" content="width=device-width, initial-scale=1.0" />
     <title>vue的双向绑定原理及实现</title>
     <style>
       #app {
@@ -13,23 +13,29 @@
     </style>
   </head>
   <body>
-    <div id="app">{{name}}</div>
+    <div id="app">
+      <h1>{{title}}</h1>
+      <h2>{{description}}</h2>
+    </div>
   </body>
   <script src="./js/observer.js"></script>
   <script src="./js/watcher.js"></script>
+  <script src="./js/compile.js"></script>
   <script src="./js/index.js"></script>
   <script>
     let ele = document.querySelector('#app')
-    let myVue = new MyVue(
-      {
-        name: 'hello world'
-      },
-      ele,
-      'name'
-    )
+    let myVue = new MyVue({
+      el: '#app',
+      data: {
+        title: 'What is MyVue.js?',
+        description: ''
+      }
+    })
     setTimeout(() => {
-      console.log('name值改变了')
-      myVue.name = 'canfoo'
+      myVue.title = 'my-vue'
     }, 2000)
+    setTimeout(() => {
+      myVue.description = 'The Progressive JavaScript Framework'
+    }, 3000)
   </script>
 </html>

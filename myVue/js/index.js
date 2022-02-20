@@ -1,10 +1,10 @@
-function MyVue(data, el, exp) {
-  this.data = data
-  Object.keys(data).forEach(key => this.proxyKeys(key))
+function MyVue(options) {
+  this.vm = this
+  this.data = options.data
+  Object.keys(this.data).forEach(key => this.proxyKeys(key))
 
-  observe(data)
-  el.innerHTML = this.data[exp] // 初始化模板数据的值
-  new Watcher(this, exp, value => (el.innerHTML = value))
+  observe(this.data)
+  new Compile(options.el, this.vm)
 }
 
 MyVue.prototype = {
