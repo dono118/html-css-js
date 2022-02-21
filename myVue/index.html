@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta description="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>vue的双向绑定原理及实现</title>
     <style>
       #app {
@@ -15,7 +15,9 @@
   <body>
     <div id="app">
       <h1>{{title}}</h1>
-      <h2>{{description}}</h2>
+      <input v-model="name" type="text" />
+      <h2>{{name}}</h2>
+      <button v-on:click="clickMe">click me!</button>
     </div>
   </body>
   <script src="./js/observer.js"></script>
@@ -27,15 +29,19 @@
     let myVue = new MyVue({
       el: '#app',
       data: {
-        title: 'What is MyVue.js?',
-        description: ''
+        title: 'hello world!',
+        name: 'aaa'
+      },
+      methods: {
+        clickMe() {
+          this.title = 'hello world!'
+        }
+      },
+      mounted() {
+        setTimeout(() => {
+          myVue.title = '你好'
+        }, 2000)
       }
     })
-    setTimeout(() => {
-      myVue.title = 'my-vue'
-    }, 2000)
-    setTimeout(() => {
-      myVue.description = 'The Progressive JavaScript Framework'
-    }, 3000)
   </script>
 </html>

@@ -1,10 +1,12 @@
 function MyVue(options) {
-  this.vm = this
   this.data = options.data
+  this.methods = options.methods
+
   Object.keys(this.data).forEach(key => this.proxyKeys(key))
 
   observe(this.data)
-  new Compile(options.el, this.vm)
+  new Compile(options.el, this)
+  options.mounted.call(this)
 }
 
 MyVue.prototype = {

@@ -28,29 +28,79 @@ Compile.prototype = {
   compileElement(el) {
     let childNodes = el.childNodes
     ;[].slice.call(childNodes).forEach(node => {
-      let reg = /\{\{\s*(.*?)\s*\}\}/
+      let reg = /\{\{(.*)\}\}/
       let text = node.textContent
-      if (this.isTextNode(node) && reg.test(text)) {
-        // 判断是否是符合这种形式{{}}的指令
+
+      if (this.isElementNode(node)) {
+        this.compile(node)
+      } else if (this.isTextNode(node) && reg.test(text)) {
         this.compileText(node, reg.exec(text)[1])
       }
 
       if (node.childNodes && node.childNodes.length) {
-        this.compileElement(node) // 继续递归遍历子节点
+        this.compileElement(node)
+      }
+    })
+  },
+  compile(node) {
+    let nodeAttrs = node.attributes
+    Array.prototype.forEach.call(nodeAttrs, attr => {
+      let attrName = attr.name
+      if (this.isDirective(attrName)) {
+        let exp = attr.value
+        let dir = attrName.substring(2)
+        if (this.isEventDirective(dir)) {
+          // 事件指令
+          this.compileEvent(node, this.vm, exp, dir)
+        } else {
+          // v-model 指令
+          this.compileModel(node, this.vm, exp, dir)
+        }
+        node.removeAttribute(attrName)
       }
     })
   },
   compileText(node, exp) {
     let initText = this.vm[exp]
-    this.updateText(node, initText) // 将初始化的数据初始化到视图中
-    new Watcher(
-      this.vm,
-      exp,
-      value => this.updateText(node, value) // 生成订阅器并绑定更新函数
-    )
+    this.updateText(node, initText)
+    new Watcher(this.vm, exp, value => this.updateText(node, value))
+  },
+  compileEvent(node, vm, exp, dir) {
+    let eventType = dir.split(':')[1]
+    let cb = vm.methods && vm.methods[exp]
+
+    if (eventType && cb) {
+      node.addEventListener(eventType, cb.bind(vm), false)
+    }
+  },
+  compileModel(node, vm, exp, dir) {
+    let val = this.vm[exp]
+    this.modelUpdater(node, val)
+    new Watcher(this.vm, exp, value => this.modelUpdater(node, value))
+
+    node.addEventListener('input', e => {
+      let newValue = e.target.value
+      if (val === newValue) {
+        return
+      }
+      this.vm[exp] = newValue
+      val = newValue
+    })
   },
   updateText(node, value) {
     node.textContent = typeof value == 'undefined' ? '' : value
+  },
+  modelUpdater(node, value, oldValue) {
+    node.value = typeof value == 'undefined' ? '' : value
+  },
+  isDirective(attr) {
+    return attr.indexOf('v-') == 0
+  },
+  isEventDirective(dir) {
+    return dir.indexOf('on:') === 0
+  },
+  isElementNode(node) {
+    return node.nodeType == 1
   },
   isTextNode(node) {
     return node.nodeType == 3
