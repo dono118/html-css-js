@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>侧边栏展开/隐藏</title>
+    <!-- 这个是提前引入的字体图标 -->
+    <link rel="stylesheet" href="../common/css/font-awesome.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="sidenav">
+      <input type="checkbox" id="checkbox" />
+      <!-- label元素的for属性值必须和复选框的id属性值是相同的，才能够通过点击label选中复选框 -->
+      <div class="topnav">
+        <label for="checkbox">
+          <i class="fa fa-bars"></i>
+        </label>
+      </div>
+      <ul>
+        <li>
+          <img src="./images/1.jpg" alt="avatar" />
+          <span>欢迎您！管理员</span>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <i class="fa fa-home"></i>
+            <span>后台首页</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <i class="fa fa-sitemap"></i>
+            <span>商品列表</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <i class="fa fa-user"></i>
+            <span>用户列表</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <i class="fa fa-shopping-cart"></i>
+            <span>订单列表</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <i class="fa fa-windows"></i>
+            <span>功能列表</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

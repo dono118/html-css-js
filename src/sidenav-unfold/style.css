@@ -1,0 +1,132 @@
+* {
+  /* 页面初始化 清除元素原有的内外边距 */
+  margin: 0;
+  padding: 0;
+}
+body {
+  /* 溢出隐藏 */
+  overflow: hidden;
+}
+.sidenav {
+  /* 相对定位 */
+  position: relative;
+}
+.sidenav input {
+  /* 隐藏元素 */
+  display: none;
+}
+.sidenav .topnav {
+  position: absolute;
+  top: 0;
+  left: 70px;
+  width: 100%;
+  height: 54px;
+  background-color: #ededed;
+  /* 加过渡效果 */
+  transition: all 0.5s;
+}
+.sidenav label {
+  line-height: 54px;
+  padding: 0 20px;
+  font-size: 30px;
+  color: #5a738e;
+  /* 鼠标移入变小手 */
+  cursor: pointer;
+}
+.sidenav ul {
+  /* 溢出隐藏 */
+  overflow: hidden;
+  /* 删除li前面的小黑点 */
+  list-style: none;
+  width: 70px;
+  /* 高度占浏览器可视区域的高度 */
+  height: 100vh;
+  background-color: #2a3f54;
+  /* 加过渡效果 */
+  transition: all 0.5s;
+}
+.sidenav ul li {
+  height: 70px;
+  margin-bottom: 10px;
+}
+/* :first-child选择器 选择到ul下面第一个元素 */
+.sidenav ul li:first-child {
+  /* 弹性布局 让元素在该盒子内垂直+水平居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+.sidenav ul li:first-child img {
+  width: 50px;
+  border-radius: 50%;
+}
+.sidenav ul li:first-child span {
+  /* 先把文字隐藏起来 */
+  display: none;
+  color: #fff;
+  /* 文字禁止换行 */
+  white-space: nowrap;
+}
+.sidenav ul li a {
+  /* 弹性布局 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 这个属性改变了弹性盒子的主轴方向 现在主轴方向向下 元素也就垂直排列 */
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: #d1d1d1;
+  /* 取消文字的下划线 */
+  text-decoration: none;
+}
+.sidenav ul li a i {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.sidenav ul li a span {
+  font-size: 10px;
+  /* 给这个文字也加禁止换行 不然切换的一瞬间会垂直排列 */
+  white-space: nowrap;
+}
+.sidenav ul li a:hover {
+  color: #fff;
+  background-color: #35495d;
+}
+/* :checked选择器判断复选框是否被选中 */
+/* +是相邻兄弟选择器 找到了input的下一个兄弟元素 */
+.sidenav input:checked + .topnav {
+  left: 200px;
+  transition: all 0.5s;
+}
+/* ~是通用兄弟选择器 但是可以找到后面所有的兄弟元素 */
+.sidenav input:checked ~ ul {
+  width: 200px;
+}
+.sidenav input:checked ~ ul li:first-child {
+  /* 改变了元素在弹性盒子内的水平排列方式 从开头排序 */
+  justify-content: flex-start;
+}
+.sidenav input:checked ~ ul li:first-child span {
+  /* 文字显示 */
+  display: block;
+  padding-left: 10px;
+}
+.sidenav input:checked ~ ul li:not(:first-child) {
+  height: 50px;
+  margin-bottom: 5px;
+}
+.sidenav input:checked ~ ul li a {
+  /* 改变了主轴的方向为默认值 水平排列 */
+  flex-direction: row;
+  /* 改变了元素在弹性盒子内的水平排列方式 从开头排序 */
+  justify-content: flex-start;
+}
+.sidenav input:checked ~ ul li a i {
+  font-size: 18px;
+  margin: 0 15px;
+}
+.sidenav input:checked ~ ul li a span {
+  font-size: 13px;
+}
