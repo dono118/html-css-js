@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* 盒子模型 */
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #282c34;
+}
+.tab {
+  width: 700px;
+  height: 250px;
+  color: #607291;
+  background-color: #fff;
+  overflow: hidden;
+}
+input {
+  display: none;
+}
+label {
+  float: left;
+  width: 140px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #e5e9ea;
+  transition: all 0.3s;
+}
+label:hover {
+  background-color: #fff;
+}
+label img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-top: -5px;
+  margin-right: 5px;
+}
+ul {
+  /* 清除浮动 */
+  clear: both;
+  width: 3500px;
+  height: 210px;
+  transition: all 0.5s;
+}
+ul li {
+  float: left;
+  list-style: none;
+  width: 700px;
+  height: 210px;
+  padding: 40px;
+}
+ul li img {
+  float: left;
+  width: 130px;
+  height: 130px;
+  margin-right: 20px;
+}
+ul li p {
+  /* 首行缩进两个字符 */
+  text-indent: 2em;
+  /* 伸缩盒子模型 */
+  display: -webkit-box;
+  /* 在伸缩盒子模型里让元素垂直排列 */
+  -webkit-box-orient: vertical;
+  /* 这个不是css的标准语句，需要配合以上两种属性一起使用，意思是只显示三行 */
+  -webkit-line-clamp: 3;
+  /* 溢出隐藏 */
+  overflow: hidden;
+  /* 溢出隐藏的文字显示省略号 */
+  text-overflow: ellipsis;
+  margin-top: 20px;
+}
+#tab1:checked ~ ul {
+  margin-left: 0;
+}
+#tab2:checked ~ ul {
+  margin-left: -700px;
+}
+#tab3:checked ~ ul {
+  margin-left: -1400px;
+}
+#tab4:checked ~ ul {
+  margin-left: -2100px;
+}
+#tab5:checked ~ ul {
+  margin-left: -2800px;
+}
+#tab1:checked ~ label[for='tab1'] {
+  background-color: #fff;
+}
+#tab2:checked ~ label[for='tab2'] {
+  background-color: #fff;
+}
+#tab3:checked ~ label[for='tab3'] {
+  background-color: #fff;
+}
+#tab4:checked ~ label[for='tab4'] {
+  background-color: #fff;
+}
+#tab5:checked ~ label[for='tab5'] {
+  background-color: #fff;
+}
