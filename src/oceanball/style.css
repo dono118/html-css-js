@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(rgb(90, 90, 250), rgb(3, 3, 110));
+}
+.container,
+.wave {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+.container {
+  border: 3px solid darkturquoise;
+  padding: 10px;
+}
+.wave {
+  position: relative;
+  background-color: skyblue;
+  /* 溢出隐藏 */
+  overflow: hidden;
+}
+.wave::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 40%;
+  /* 向左移动自身宽度的50%，向上移动自身高度的60% */
+  transform: translate(-50%, -60%);
+  /* 动画 名称 时长 linear 表示匀速运动 infinite 表示无限次播放 */
+  animation: wave 5s linear infinite;
+}
+.wave::after {
+  content: 'oceanball';
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  /* 文字大写 */
+  text-transform: uppercase;
+  color: darkturquoise;
+  font-weight: 700;
+  transform: translate(-50%, 0);
+}
+/* 下面定位水波纹效果 */
+@keyframes wave {
+  100% {
+    /* translate：位移 translate中的百分比单位是相对于自身元素的宽度或高度、
+      rotate：旋转 rotate里面跟度数，单位是deg 默认旋转的中心是元素的中心点
+    */
+    transform: translate(-50%, -60%) rotate(360deg);
+  }
+}
