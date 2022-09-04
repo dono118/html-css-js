@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.box1 {
+  width: 100px;
+  background-color: yellow;
+}
+.box2 {
+  width: 100px;
+  background-color: red;
+}
+span {
+  background-color: #bfa;
+}

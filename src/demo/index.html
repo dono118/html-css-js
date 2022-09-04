@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- 
+      文档流(normal flow)
+        网页是一个多层的结构，一层摞着一层
+        通过CSS可以分别为每一层来设置样式，作为用户来讲，只能看到最顶上一层
+        这些层中，最底下的一层称为文档流，文档流是网页的基础
+      块元素
+        块元素在页面上独占一行,自上向下垂直排列
+        默认宽度是父元素的全部(会把父元素撑满)
+        默认高度是内容撑开(子元素)
+      行内元素
+        行内元素只占自身的大小,不会独占页面的一行
+        行内元素在页面中从左往右排列,一行内撑不下则换到第二行
+        行内元素的默认高度和宽度都是被内容撑开,width和height不管用
+     -->
+    <div class="demo">
+      <div class="box1">div1</div>
+      <div class="box2">div2</div>
+      <span>span1</span>
+      <span>span2</span>
+    </div>
+  </body>
+</html>
