@@ -22,11 +22,24 @@
         行内元素在页面中从左往右排列,一行内撑不下则换到第二行
         行内元素的默认高度和宽度都是被内容撑开,width和height不管用
      -->
+    <!-- 
+      盒模型(Box Model)：
+        CSS 盒模型本质上是一个盒子，封装周围的HTML元素，它包括：边距，边框，填充，和实际内容
+        盒模型允许我们在其它元素和周围元素边框之间的空间放置元素
+      CSS 中组成一个块级盒子需要:
+        Content box（内容）: 这个区域是用来显示内容，大小可以通过设置 width 和 height
+        Padding box（内边距）: 包围在内容区域外部的空白区域； 大小通过 padding 相关属性设置
+        Border box（边框）: 边框盒包裹内容和内边距。大小通过 border 相关属性设置
+        Margin box（外边距）: 这是最外面的区域，是盒子和其他元素之间的空白区域。大小通过 margin 相关属性设置
+      标准盒模型：
+        标准盒模型又称W3C标准盒模型，其中标准盒模型的 width 等于 content 的宽度，标准盒模型的 height 等于 content 的高度。
+        标准盒大小计算公式：width(content) + padding + border + margin
+      怪异盒模型：
+        怪异盒模型又称IE盒子模型，其中怪异盒子模型的 width 等于 content + padding + border 的宽度，怪异盒子模型的 height 等于 content + padding + border 的高度。
+        怪异盒大小的计算公式：width(content + padding + border) + margin
+     -->
     <div class="demo">
-      <div class="box1">div1</div>
-      <div class="box2">div2</div>
       <span>span1</span>
-      <span>span2</span>
     </div>
   </body>
 </html>

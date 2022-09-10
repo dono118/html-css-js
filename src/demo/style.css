@@ -1,15 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-.box1 {
-  width: 100px;
-  background-color: yellow;
-}
-.box2 {
-  width: 100px;
-  background-color: red;
-}
-span {
+.demo {
+  width: 200px;
+  height: 200px;
   background-color: #bfa;
+  border: 10px solid red;
 }
