@@ -1,12 +1,6 @@
 .box {
-  width: 500px;
+  width: 200px;
   height: 200px;
   background-color: #bfa;
-}
-.box .inner {
-  width: 100px;
-  margin: 0 auto;
-  height: 180px;
-  border: 10px solid red;
-  background-color: orange;
+  overflow: auto;
 }
