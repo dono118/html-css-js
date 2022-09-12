@@ -40,20 +40,25 @@
      -->
     <!-- 
       盒子模型之水平方向布局
-      元素的水平方向的布局：元素在其父元素中水平方向的位置由以下几个属性共同决定:
-       margin-left,border-left,padding-left,width(默认值为auto),padding-right,border-right,margin-right
-      一个元素在其父元素中，水平布局必须要满足以下的等式：
-       margin-left+border-left+padding-left+width+padding-right+border-right+margin-right=其父元素内容区的宽度(必须满足)
-      备注： 这七个值中有三个值可以设置为auto
-       width
-       margin-left
-       margin-right
-      设置为auto的效果：
-       1、如果某个值为auto，则会自动调整为auto的那个值以使等式成立
-       2、如果将一个宽度和一个外边距设置为auto，则宽度会调整到最大，设置为auto的外边距会自动为0
-       3、如果将三个值都设置为auto，则外边距都是0，宽度最大
-       4、如果将两个外边距设置为auto，宽度固定值，则会将外边距设置为相同的值。
-      所以我们经常利用效果4来使一个元素在其父元素中水平居中。
+        元素的水平方向的布局：元素在其父元素中水平方向的位置由以下几个属性共同决定:
+          margin-left,border-left,padding-left,width(默认值为auto),padding-right,border-right,margin-right
+        一个元素在其父元素中，水平布局必须要满足以下的等式：
+          margin-left+border-left+padding-left+width+padding-right+border-right+margin-right=其父元素内容区的宽度(必须满足)
+        注意： 以上等式必须满足，如果相加结果使等式不成立，则称为过度约束，等式会自动调整。
+          0+0+0+100+0+0+0=500
+        调整的情况：
+          如果这七个值中没有为auto的情况，则浏览器会自动调整margin-right值以使等式满足。
+          0+0+0+100+0+0+400=500
+        备注： 这七个值中有三个值可以设置为auto
+          width
+          margin-left
+          margin-right
+        设置为auto的效果：
+          1、如果某个值为auto，则会自动调整为auto的那个值以使等式成立
+          2、如果将一个宽度和一个外边距设置为auto，则宽度会调整到最大，设置为auto的外边距会自动为0
+          3、如果将三个值都设置为auto，则外边距都是0，宽度最大
+          4、如果将两个外边距设置为auto，宽度固定值，则会将外边距设置为相同的值。
+        所以我们经常利用效果4来使一个元素在其父元素中水平居中。
      -->
     <div class="box">
       <div class="inner">inner</div>
