@@ -1,6 +1,27 @@
-.box {
+/* .box1,
+.box2 {
   width: 200px;
   height: 200px;
+}
+.box1 {
   background-color: #bfa;
-  overflow: auto;
+  margin-bottom: 50px;
+}
+.box2 {
+  background-color: orange;
+  margin-top: 60px;
+} */
+.box3 {
+  width: 200px;
+  height: 100px;
+  background-color: #bfa;
+  padding-top: 100px;
+  /* height: 190px;
+  border-top: 10px solid #bfa; */
+}
+.box4 {
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+  /* margin-top: 90px; */
 }
