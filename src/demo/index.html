@@ -83,13 +83,42 @@
           父子元素间相邻外边距，子元素的会传递给父元素 (指上外边距)。
           父子外边距的重叠会影响到页面的布局，必须要进行处理。
      -->
+    <!-- 
+      行内元素的盒子模型
+        行内元素不支持设置宽度和高度
+          行内元素可以设置padding、border、margin，但是在垂直方向设置这些属性不会影响页面的布局
+        display------用来设置元素的显示类型
+        可选值：
+          inline：将元素设置为行内元素
+          block：将元素设置为块元素
+          inline-block：将元素设置为行内块元素（行内块元素可以设置宽度和高度，且不会独占一行）
+          table：将元素设置为一个表格
+          none：元素在页面中消失，不占据页面位置
+        visibility------用来设置元素的可见性
+        可选值：
+          visible：默认值，元素在页面中正常显示
+          hidden：元素在页面中隐藏，不显示，但是依然占据页面的位置
+     -->
+    <!-- 
+      javascript: 是一个伪协议
+        ①javascript:  是一个伪协议,表示在触发默认动作时，执行一段JavaScript代码
+        ②javascript:; 表示什么都不执行，这样点击时就没有任何反应
+        ③用在哪： 当前页面点一下，不跳转， 一般这么干的话会额外用jQuery绑定事件
+      其他的伪协议还有 mail: tel: file: 等等。
+      还得知道啥其他防止页面跳转的实现方式:
+      <a href="#">test</a>
+        ①点击后，页面默认上滚到页的顶部
+        ②防止上滚到页的顶部: 加上 οnclick="return false"
+      <a href="####">test</a>
+        ①是啥: 一个无意义的标签指定，不做任何处理。
+        ②用2个到4个#，大多是"####"，也有使用"#all"等其他的。
+      <a href="javascript：void(0);">test</a>
+        javascript:void(0) 表示一个死链接，执行空事件。
+     -->
 
-    <!-- 兄弟元素 -->
-    <!-- <div class="box1"></div>
-    <div class="box2"></div> -->
-    <!-- 父子元素 -->
-    <div class="box3">
-      <div class="box4"></div>
-    </div>
+    <a href="javascript:;">超链接</a>
+    <span>span1</span>
+    <span>span2</span>
+    <div class="box"></div>
   </body>
 </html>

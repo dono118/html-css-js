@@ -1,27 +1,23 @@
-/* .box1,
-.box2 {
+.box {
   width: 200px;
   height: 200px;
-}
-.box1 {
   background-color: #bfa;
-  margin-bottom: 50px;
 }
-.box2 {
-  background-color: orange;
-  margin-top: 60px;
-} */
-.box3 {
-  width: 200px;
-  height: 100px;
-  background-color: #bfa;
-  padding-top: 100px;
-  /* height: 190px;
-  border-top: 10px solid #bfa; */
+span {
+  /* width: 100px;
+  height: 100px; */
+  padding: 20px;
+  margin: 30px;
+  border: 6px solid red;
+  background-color: yellow;
 }
-.box4 {
+a {
+  display: block;
+  visibility: visible;
+  /* visibility: hidden; */
+  /* display: inline-block; */
+  /* display: none; */
   width: 100px;
-  height: 100px;
+  height: 60px;
   background-color: orange;
-  /* margin-top: 90px; */
 }
