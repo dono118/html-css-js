@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Demo</title>
+    <!-- <link rel="stylesheet" href="./css/reset.css" /> -->
+    <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -115,10 +117,36 @@
       <a href="javascript：void(0);">test</a>
         javascript:void(0) 表示一个死链接，执行空事件。
      -->
+    <!-- 
+      浏览器的默认样式：
+        -通常情况，浏览器都会为元素设置一些默认样式
+        -默认样式的存在会影响到页面的布局，通常情况下编写网页时必须要去去除浏览器的默认样式（PC端的页面）
+          body{ margin:0; }  
+          p{ margin:0; }
+          ul{
+            margin:0;
+            padding:0;
+            list-style:none;
+          }
+        通常情况是这样处理（但是也是做一些简单的页面的时候，处理复杂页面的时候这样写还是会有残留）：
+          *{
+            margin:0;
+            padding:0;
+          } 
+        因此，我们还是需要一个个的处理html所有标签的默认样式，但是这样做很麻烦。
+          所以我们可以用别人写好的去除默认样式的css文件。上网搜一下就有了。
+          reset.css：http://meyerweb.com/eric/tools/css/reset/
+            直接去除浏览器的默认样式 
+          normalize.css：
+            对默认样式进行了统一（不同浏览器默认样式不同嘛，所以需要统一）
+     -->
 
-    <a href="javascript:;">超链接</a>
-    <span>span1</span>
-    <span>span2</span>
     <div class="box"></div>
+    <p>这是一个段落</p>
+    <ul>
+      <li>列表项1</li>
+      <li>列表项2</li>
+      <li>列表项3</li>
+    </ul>
   </body>
 </html>
