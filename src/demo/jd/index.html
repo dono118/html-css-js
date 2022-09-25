@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片列表</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <style>
+      ul {
+        width: 190px;
+        height: 470px;
+        overflow: hidden;
+        margin: 50px auto;
+        /* 添加背景色 */
+        background-color: #f4f4f4;
+      }
+
+      ul > li img {
+        /* 
+          这里其实只调整高度即可，因为我们下载的图片宽高比跟F12中调试的是一致的
+          而且一般情况下，不会固定或修改图片在网页中显示的宽高比
+          因为如果我们随意调整css中的宽高比，会导致图片变形 
+          这里任意只调整高度或宽度，图片可以保持原比例大小
+        */
+        /* width: 190px; */
+        height: 150px;
+      }
+      /* ul > li {
+        margin-bottom: 10px;
+      } */
+      /* 
+        但是上述写法有些问题，最后一张图片也有10px的外边距，有可能会影响到页面布局 
+        所以我们可以指定最后一个没有外边距，可以使用之前讲到的伪类选择器
+      */
+      ul > li:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div>
+      <a href=""><img src="" alt="" /></a>
+      <a href=""><img src="" alt="" /></a>
+      <a href=""><img src="" alt="" /></a>
+    </div> -->
+    <ul>
+      <li>
+        <a href="javascript:;"><img src="./img/1.jpg" /></a>
+      </li>
+      <li>
+        <a href="javascript:;"><img src="./img/2.jpg" /></a>
+      </li>
+      <li>
+        <a href="javascript:;"><img src="./img/3.png" /></a>
+      </li>
+    </ul>
+  </body>
+</html>
