@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>字符串轮转</title>
+  </head>
+  <body>
+    <script>
+      /*
+        给定两个字符串s1和s2，请编写代码检查s2是否为s1旋转而成
+        （比如，waterbottle是erbottlewat旋转后的字符串）
+        示例 1：
+          输入：s1 = "waterbottle", s2 = "erbottlewat"
+          输出：True
+        示例 2：
+          输入：s1 = "aa", s2 = "aba"
+          输出：False
+      */
+      var isFlipedString = function (s1, s2) {
+        if (s1.length === s2.length) {
+          var str = s1 + s1
+          return str.includes(s2)
+        } else {
+          return false
+        }
+      }
+
+      console.log(isFlipedString('waterbottle', 'erbottlewat'))
+    </script>
+  </body>
+</html>
