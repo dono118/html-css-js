@@ -17,8 +17,34 @@ ul {
   padding: 0;
 } */
 
-.box {
+.box1 {
+  /* width: 200px;
+  height: 200px;
+  background-color: #bfa; */
+  border: 5px solid red;
+  /* float: left;  */
+  /* display: inline-block; */
+  /* overflow: hidden; */
+}
+.box2 {
   width: 100px;
   height: 100px;
-  border: 1px solid #000;
+  background-color: orange;
+  /* margin-top: 100px; */
+  float: left;
+}
+/* .box1::before {
+  content: '';
+  display: table;
+} */
+/* .box1::after {
+  content: '';
+  display: table;
+  clear: both;
+} */
+.clearfix::before,
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
 }
