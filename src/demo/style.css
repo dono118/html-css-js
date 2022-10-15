@@ -16,22 +16,27 @@ ul {
   margin: 0;
   padding: 0;
 } */
-
+body {
+  font-size: 60px;
+}
 .box1 {
-  /* width: 200px;
+  width: 200px;
   height: 200px;
-  background-color: #bfa; */
-  border: 5px solid red;
+  background-color: #bfa;
+  /* border: 5px solid red; */
   /* float: left;  */
   /* display: inline-block; */
   /* overflow: hidden; */
 }
 .box2 {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   background-color: orange;
   /* margin-top: 100px; */
-  float: left;
+  /* float: left; */
+  position: relative;
+  top: -200px;
+  left: 200px;
 }
 /* .box1::before {
   content: '';
@@ -42,9 +47,14 @@ ul {
   display: table;
   clear: both;
 } */
-.clearfix::before,
+/* .clearfix::before,
 .clearfix::after {
   content: '';
   display: table;
   clear: both;
+} */
+.box3 {
+  width: 200px;
+  height: 200px;
+  background-color: yellow;
 }
