@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>二进制求和</title>
+  </head>
+  <body>
+    <script>
+      /*
+        给你两个二进制字符串 a 和 b，以二进制字符串的形式返回它们的和。
+        示例 1：
+          输入：a = "11", b="1"
+          输出："100"
+        示例 2：
+          输入：a = "1010", b="1011"
+          输出："10101"
+        */
+      var addBinary = function (a, b) {
+        let res = ''
+        let c = 0
+        a = a.split('')
+        b = b.split('')
+        while (a.length || b.length || c) {
+          c += ~~a.pop() + ~~b.pop()
+          res = (c % 2) + res
+          c = c > 1
+        }
+        return res
+      }
+      console.log(addBinary('11', '1')) //100
+      console.log(addBinary('1010', '1011')) //10101
+    </script>
+  </body>
+</html>
