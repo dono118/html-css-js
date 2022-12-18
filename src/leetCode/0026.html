@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>杨辉三角形Ⅰ</title>
+  </head>
+  <body>
+    <script>
+      /*
+        给定一个非负整数 numRows，生成「杨辉三角」的前 numRows 行。
+        在「杨辉三角」中，每个数是它左上方和右上方的数的和。
+        示例 1：
+          输入：numRows = 5
+          输出： [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+        示例 2：
+          输入：numRows = 1
+          输出：[[1]]
+        */
+      var generate = function (numRows) {
+        let res = [[1]]
+        if (numRows) {
+          for (let i = 1; i < numRows; i++) {
+            res[i] = []
+            for (let j = 0; j < i + 1; j++) {
+              res[i][j] = (res[i - 1][j] || 0) + (res[i - 1][j - 1] || 0)
+            }
+          }
+          return res
+        } else {
+          return []
+        }
+      }
+      console.log('==========>', generate(5))
+    </script>
+  </body>
+</html>
