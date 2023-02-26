@@ -309,14 +309,59 @@ MyStack.prototype.empty = function () {
  * var param_4 = obj.empty()
  */
 
-let obj = new MyStack()
-obj.push(1)
-obj.push(2)
-let e1 = obj.pop()
-console.log(e1, obj.queue)
-let e2 = obj.top()
-console.log(e2, obj.queue)
-let e3 = obj.pop()
-console.log(e3, obj.queue)
-let bool = obj.empty()
-console.log(bool, obj.queue)
+// let obj = new MyStack()
+// obj.push(1)
+// obj.push(2)
+// let e1 = obj.pop()
+// console.log(e1, obj.queue)
+// let e2 = obj.top()
+// console.log(e2, obj.queue)
+// let e3 = obj.pop()
+// console.log(e3, obj.queue)
+// let bool = obj.empty()
+// console.log(bool, obj.queue)
+
+/*
+  各位相加
+  给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数。返回这个结果。
+  示例 1：
+    输入：num = 38
+    输出：2
+    解释：
+      各位相加的过程为：
+        38 --> 3 + 8 --> 11
+        11 --> 1 + 1 --> 2
+        由于 2 是一位数，所以返回 2。
+  示例 2：
+    输入：num = 0
+    输出：0
+ */
+
+/**
+ * @param {number} num
+ * @return {number}
+ */
+var addDigits = function (num) {
+  // function foo(s) {
+  //   let myNum = s
+  //     .toString()
+  //     .split('')
+  //     .reduce((a, b) => parseInt(a) + parseInt(b))
+  //   let len = myNum.toString().length
+  //   if (len > 1) {
+  //     return foo(myNum)
+  //   } else {
+  //     return myNum
+  //   }
+  // }
+
+  // if (num.toString().length > 1) {
+  //   return foo(num)
+  // } else {
+  //   return num
+  // }
+  if (num === 0) return 0
+  return ((num - 1) % 9) + 1
+}
+
+console.log(addDigits(38))
