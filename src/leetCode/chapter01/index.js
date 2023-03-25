@@ -481,4 +481,47 @@ var moveZeroes = function (nums) {
   }
   return nums
 }
-console.log(moveZeroes([0, 1, 0, 3, 12]))
+// console.log(moveZeroes([0, 1, 0, 3, 12]))
+
+/*
+  单词规律
+  给定一种规律 pattern 和一个字符串 s ，判断 s 是否遵循相同的规律。
+  这里的 遵循 指完全匹配，例如， pattern 里的每个字母和字符串 s 中的
+  每个非空单词之间存在着双向连接的对应规律。
+  示例 1:
+    输入: pattern = "abba", s = "dog cat cat dog"
+    输出: true
+  示例 2:
+    输入: pattern = "abba", s = "dog cat cat fish"
+    输出: false
+  示例 3:
+    输入: pattern = "aaaa", s = "dog cat cat dog"
+    输出: false
+ */
+/**
+ * @param {String} pattern
+ * @param {String} s
+ * @return {boolean}
+ */
+var wordPattern = function (pattern, s) {
+  let pArr = pattern.split(''),
+    sArr = s.split(' ')
+  if (pArr.length !== sArr.length) {
+    return false
+  }
+  let map = new Map()
+  for (let i = 0; i < sArr.length; i++) {
+    // 如果存在值，但是对应的值跟哈希表中不一致，则规律不对
+    if (map.get(sArr[i]) && map.get(sArr[i]) !== pArr[i]) {
+      return false
+    }
+    // 如果不存在值，但是对应的值的索引不是当前索引，则规律不对
+    if (map.get(sArr[i]) === undefined && pArr.indexOf(pArr[i]) !== i) {
+      return false
+    }
+    map.set(sArr[i], pArr[i])
+  }
+  return true
+}
+
+console.log(wordPattern('abba', 'dog cat cat dog'))
