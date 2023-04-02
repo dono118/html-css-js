@@ -554,4 +554,29 @@ var canWinNim = function (n) {
   return n % 4 !== 0
 }
 
-console.log(canWinNim(4))
+// console.log(canWinNim(4))
+
+/*
+  2 的幂
+  给定一个整数，请你判断该整数是否是 2 的幂次方。如果是，返回 true ；
+  否则，返回 false 。
+  如果存在一个整数 x 使得 n == 2^x ，则认为 n 是 2 的幂次方。
+  示例 1:
+    输入：n = 1
+    输出：true
+  示例 2:
+    输入: n = 27
+    输出: false
+  示例 3:
+    输入: n = 16
+    输出: true
+ */
+var isPowerOfTwo = function (n) {
+  if (n < 1) return false
+  while (n % 2 === 0) {
+    n /= 2
+  }
+  return n === 1
+}
+
+console.log(isPowerOfTwo(16))
