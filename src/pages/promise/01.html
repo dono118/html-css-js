@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise 初体验-抽奖</title>
+    <link
+      crossorigin="anonymous"
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="page-header">Promise 初体验</h2>
+      <button id="btn" class="btn btn-primary">点我抽奖</button>
+    </div>
+    <script>
+      // 生成随机数
+      function randomNum(m, n) {
+        return Math.ceil(Math.random() * (n - m + 1)) + m - 1
+      }
+
+      /**
+       * 点击按钮，1s 后显示是否中奖（30%概率中奖）
+       */
+      // 获取元素对象
+      const btn = document.querySelector('#btn')
+      // 绑定单击事件
+      btn.addEventListener('click', function () {
+        // 定时器
+        // setTimeout(() => {
+        //   // 30% 1-100 <=30
+        //   // 获取1-100的随机数
+        //   let n = randomNum(1, 100)
+        //   if (n <= 30) {
+        //     alert('恭喜恭喜，奖品为 10万RMB 劳斯莱斯优惠券')
+        //   } else {
+        //     alert('再接再厉')
+        //   }
+        // }, 1000)
+
+        // Promise 形式实现
+        const p = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            // 30% 1-100 <=30
+            // 获取1-100的随机数
+            let n = randomNum(1, 100)
+            if (n <= 30) {
+              // 中奖了
+              resolve() // 将 promise 对象的状态设置为 【成功】
+            } else {
+              // 未中奖
+              reject() // 将 promise 对象的状态设置为 【失败】
+            }
+          }, 1000)
+        })
+        // 调用 then 方法
+        p.then(
+          () => {
+            alert('恭喜恭喜，奖品为 10万RMB 劳斯莱斯优惠券')
+          },
+          () => {
+            alert('再接再厉')
+          }
+        )
+      })
+    </script>
+  </body>
+</html>
