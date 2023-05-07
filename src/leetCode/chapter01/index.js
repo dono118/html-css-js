@@ -700,6 +700,46 @@ var reverseString = function (s) {
     right--
   }
 }
-let s = ['h', 'e', 'l', 'l', 'o']
-reverseString(s)
-console.log(s)
+// let s = ['h', 'e', 'l', 'l', 'o']
+// reverseString(s)
+// console.log(s)
+
+/*
+  反转字符串中的元音字母
+  给你一个字符串 s ，仅反转字符串中的所有元音字母，并返回结果字符串。
+  元音字母包括 'a'、'e'、'i'、'o'、'u'，且可能以大小写两种形式出现不止一次。
+  的额外空间解决这一问题。
+  示例 1:
+    输入：s = "hello"
+    输出："holle"
+  示例 2:
+    输入: s = "leetcode"
+    输出: "leotcede"
+ */
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseVowels = function (s) {
+  const arr = ['a', 'o', 'e', 'i', 'u', 'A', 'O', 'E', 'I', 'U']
+  s = s.split('')
+  let i = 0,
+    j = s.length - 1
+  while (i < j) {
+    if (arr.indexOf(s[i]) === -1) {
+      i++
+      continue
+    }
+    if (arr.indexOf(s[j]) === -1) {
+      j--
+      continue
+    }
+
+    ;[s[i], s[j]] = [s[j], s[i]]
+    i++
+    j--
+  }
+  return s.join('')
+}
+
+console.log(reverseVowels('hello'))
