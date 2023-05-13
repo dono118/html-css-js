@@ -49,20 +49,22 @@
             let n = randomNum(1, 100)
             if (n <= 30) {
               // 中奖了
-              resolve() // 将 promise 对象的状态设置为 【成功】
+              resolve(n) // 将 promise 对象的状态设置为 【成功】
             } else {
               // 未中奖
-              reject() // 将 promise 对象的状态设置为 【失败】
+              reject(n) // 将 promise 对象的状态设置为 【失败】
             }
           }, 1000)
         })
         // 调用 then 方法
         p.then(
-          () => {
-            alert('恭喜恭喜，奖品为 10万RMB 劳斯莱斯优惠券')
+          value => {
+            alert(
+              '恭喜恭喜，奖品为 10万RMB 劳斯莱斯优惠券，您的中奖数字为 ' + value
+            )
           },
-          () => {
-            alert('再接再厉')
+          reason => {
+            alert('再接再厉，您的号码为 ' + reason)
           }
         )
       })
