@@ -742,4 +742,31 @@ var reverseVowels = function (s) {
   return s.join('')
 }
 
-console.log(reverseVowels('hello'))
+// console.log(reverseVowels('hello'))
+
+/*
+  两个数组的交集
+  给定两个数组 nums1 和 nums2 ，返回它们的交集 。
+  输出结果中的每个元素一定是唯一的。我们可以不考虑输出结果的顺序 。
+  示例 1:
+    输入：nums1 = [1,2,2,1], nums2 = [2,2]
+    输出：[2]
+  示例 2:
+    输入: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+    输出: [9,4]
+    解释：[4,9] 也是可通过的
+ */
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var intersection = function (nums1, nums2) {
+  // let nums3 = nums1.filter(
+  //   (v, i) => nums2.includes(v) && nums1.indexOf(v) === i
+  // )
+  let nums3 = [...new Set(nums1.filter(v => nums2.includes(v)))]
+  return nums3
+}
+
+console.log(intersection([1, 2, 2, 1], [2, 2]))
