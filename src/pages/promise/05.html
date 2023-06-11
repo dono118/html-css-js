@@ -4,19 +4,30 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Promise关键问题 - 修改Promise对象状态的三种方式</title>
+    <title>Promise关键问题</title>
   </head>
   <body>
     <script>
+      // 修改Promise对象状态的三种方式
       let p = new Promise((resolve, reject) => {
         // 1. resolve 函数
-        // resolve('ok') // pending => fulfilled (resolved)
+        resolve('ok') // pending => fulfilled (resolved)
         // 2. reject 函数
         // reject('error') // pending => rejected
-        // 抛出错误
-        throw '出问题了' // pending => rejected
+        // 3. 抛出错误
+        // throw '出问题了' // pending => rejected
       })
-      console.log(p)
+      // console.log(p)
+
+      // Promise 指定多个回调 只有当状态改变时才会调用对应的回调函数
+      // 回调函数1
+      p.then(value => {
+        console.log(value) // ok
+      })
+      // 回调函数2
+      p.then(value => {
+        alert(value)
+      })
     </script>
   </body>
 </html>
