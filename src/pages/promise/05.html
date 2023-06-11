@@ -11,23 +11,37 @@
       // 修改Promise对象状态的三种方式
       let p = new Promise((resolve, reject) => {
         // 1. resolve 函数
-        resolve('ok') // pending => fulfilled (resolved)
+        // resolve('ok') // pending => fulfilled (resolved)
         // 2. reject 函数
         // reject('error') // pending => rejected
         // 3. 抛出错误
         // throw '出问题了' // pending => rejected
+
+        // excutor 执行器函数为异步时，先改变 Promise 状态再指定回调
+        setTimeout(() => {
+          resolve('ok')
+        }, 1000)
       })
       // console.log(p)
 
       // Promise 指定多个回调 只有当状态改变时才会调用对应的回调函数
       // 回调函数1
-      p.then(value => {
-        console.log(value) // ok
-      })
-      // 回调函数2
-      p.then(value => {
-        alert(value)
-      })
+      // p.then(value => {
+      //   console.log(value) // ok
+      // })
+      // // 回调函数2
+      // p.then(value => {
+      //   alert(value)
+      // })
+
+      p.then(
+        value => {
+          console.log(value)
+        },
+        reason => {
+          console.log(reason)
+        }
+      )
     </script>
   </body>
 </html>
