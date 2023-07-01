@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>优惠券镂空打孔效果</title>
+    <style>
+      body {
+        background: #939393;
+      }
+      .coupon {
+        width: 320px;
+        height: 580px;
+        border-radius: 16px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .coupon-top,
+      .coupon-bottom {
+        background: #ffffff;
+      }
+      .coupon-top {
+        flex: 1;
+      }
+      .coupon-bottom {
+        height: 120px;
+        padding: 0 38px;
+      }
+      .coupon-middle {
+        height: 64px;
+        position: relative;
+        overflow: hidden;
+      }
+      .coupon-middle div {
+        /* 中间虚线 */
+        position: absolute;
+        left: 36px;
+        right: 36px;
+        top: 29px;
+        border-top: 1px dashed #e6e6e6;
+        z-index: 9;
+      }
+      .coupon-middle:before,
+      .coupon-middle:after {
+        content: '';
+        border: 200px solid #ffffff;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        top: 60%;
+        margin-top: -230px;
+      }
+      .coupon-middle:before {
+        right: -215px;
+      }
+      .coupon-middle:after {
+        right: 104px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="coupon">
+      <div class="coupon-top"></div>
+      <div class="coupon-middle">
+        <div></div>
+      </div>
+      <div class="coupon-bottom"></div>
+    </div>
+  </body>
+</html>
