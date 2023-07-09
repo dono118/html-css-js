@@ -1018,4 +1018,38 @@ var addStrings = function (num1, num2) {
   return ans.reverse().join('')
 }
 
-console.log(addStrings('123', '45'))
+// console.log(addStrings('123', '45'))
+
+/*
+  字符串中的单词数
+  统计字符串中的单词个数，这里的单词指的是连续的不是空格的字符。
+  请注意，你可以假定字符串里不包括任何不可打印的字符。
+  示例 1：
+    输入："Hello, my name is John"
+    输出：5
+    解释：这里的单词是指连续的不是空格的字符，所以 "Hello," 算作 1 个单词。
+ */
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var countSegments = function (s) {
+  s = s + ' '
+  let status = 0,
+    count = 0,
+    len = s.length
+
+  for (let i = 0; i < len; i++) {
+    if (s[i] != ' ') {
+      if (s[i + 1] != ' ') i += 1
+      status = 1
+    } else {
+      if (status == 1) count += 1
+      status = 0
+    }
+  }
+
+  return count
+}
+
+console.log(countSegments('Hello, my name is John'))
