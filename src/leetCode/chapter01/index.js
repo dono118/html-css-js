@@ -1086,4 +1086,35 @@ var findDisappearedNumbers = function (nums) {
   return res
 }
 
-console.log(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]))
+// console.log(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]))
+
+/*
+  重复的子字符串
+  给定一个非空的字符串 s ，检查是否可以通过由它的一个子串重复多次构成。
+  示例 1：
+    输入：s = "abab"
+    输出：true
+    解释：可由子串 "ab" 重复两次构成。
+  示例 2：
+    输入：s = "aba"
+    输出：false
+  示例 3：
+    输入：s = "abcabcabcabc"
+    输出：true
+    解释：可由子串 "abc" 重复四次构成。 (或子串 "abcabc" 重复两次构成。)
+ */
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var repeatedSubstringPattern = function (s) {
+  if (s.length < 2) return false
+  let tmp = ''
+  for (let i = 0; i < s.length / 2; i++) {
+    tmp += s[i] // tmp记录0-i的子串
+    if (!s.split(tmp).join('')) return true // 以tmp打散字符串 如果全部符合 那么应该被打散一个数组 每一项都是空字符串
+  }
+  return false
+}
+
+console.log(repeatedSubstringPattern('abcabcabcabc'))
