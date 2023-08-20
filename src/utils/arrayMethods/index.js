@@ -84,8 +84,63 @@
 // })
 
 //利用filter数组去重
-let fruits = ['apple', 'orange', 'banana', 'pear', 'apple', 'orange']
-let f = fruits.filter(function (item, index, self) {
-  return self.indexOf(item) === index
+// let fruits = ['apple', 'orange', 'banana', 'pear', 'apple', 'orange']
+// let f = fruits.filter(function (item, index, self) {
+//   return self.indexOf(item) === index
+// })
+// console.log(f) // ["apple", "orange", "banana", "pear"]
+
+// sort 排序
+// var arr = [10, 20, 1, 2]
+
+//从小到大排序
+// arr.sort(function (x, y) {
+//   if (x < y) {
+//     return -1
+//   }
+//   if (x > y) {
+//     return 1
+//   }
+//   return 0
+// })
+// console.log(arr) // [1, 2, 10, 20]
+
+//从大到小排序
+// arr.sort(function (x, y) {
+//   if (x < y) {
+//     return 1
+//   }
+//   if (x > y) {
+//     return -1
+//   }
+//   return 0
+// })
+// console.log(arr) // [20, 10, 2, 1]
+
+//注：sort()方法会直接对Array进行修改，它返回的结果仍是当前Array
+
+// every 判断数组中每一项都是否满足条件，只有所有项都满足条件，才会返回true。
+// var arr = [1, 2, 3, 4, 5]
+
+// var arr2 = arr.every(function (item) {
+//   return item < 10
+// })
+// console.log(arr2) // true
+
+// var arr3 = arr.every(function (item) {
+//   return item < 3
+// })
+// console.log(arr3) // false
+
+// some 判断数组中是否存在满足条件的项，只要有一项满足条件，就会返回true。
+var arr = [1, 2, 3, 4, 5]
+
+var arr2 = arr.some(function (item) {
+  return item < 3
 })
-console.log(f) // ["apple", "orange", "banana", "pear"]
+console.log(arr2) //true
+
+var arr3 = arr.some(function (item) {
+  return item < 1
+})
+console.log(arr3) // false
