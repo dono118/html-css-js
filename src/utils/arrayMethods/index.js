@@ -133,14 +133,36 @@
 // console.log(arr3) // false
 
 // some 判断数组中是否存在满足条件的项，只要有一项满足条件，就会返回true。
-var arr = [1, 2, 3, 4, 5]
+// var arr = [1, 2, 3, 4, 5]
 
-var arr2 = arr.some(function (item) {
-  return item < 3
-})
-console.log(arr2) //true
+// var arr2 = arr.some(function (item) {
+//   return item < 3
+// })
+// console.log(arr2) //true
 
-var arr3 = arr.some(function (item) {
-  return item < 1
-})
-console.log(arr3) // false
+// var arr3 = arr.some(function (item) {
+//   return item < 1
+// })
+// console.log(arr3) // false
+
+// find 方法返回通过测试（函数内判断）的数组的第一个元素的值
+var ages = [3, 10, 18, 20]
+
+function checkAdult(age) {
+  return age >= 18
+}
+// var a1 = ages.find(checkAdult) // 18 (返回的是匹配到的第一个元素的值)
+
+// // 或者用箭头函数
+// var a2 = ages.find(ages => {
+//   return ages > 3
+// }) // 10 (返回的是匹配到的第一个元素的值)
+
+// findIndex 方法返回传入一个测试条件（函数）符合条件的数组第一个元素位置
+var a1 = ages.findIndex(checkAdult) // 2 (返回的是匹配到的第一个元素的索引)
+
+// 或者用箭头函数
+var a2 = ages.findIndex(ages => {
+  return ages > 3
+}) // 1 (返回的是匹配到的第一个元素的索引)
+console.log(a1, a2)
