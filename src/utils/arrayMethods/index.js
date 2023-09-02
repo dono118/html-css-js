@@ -146,11 +146,11 @@
 // console.log(arr3) // false
 
 // find 方法返回通过测试（函数内判断）的数组的第一个元素的值
-var ages = [3, 10, 18, 20]
+// var ages = [3, 10, 18, 20]
 
-function checkAdult(age) {
-  return age >= 18
-}
+// function checkAdult(age) {
+//   return age >= 18
+// }
 // var a1 = ages.find(checkAdult) // 18 (返回的是匹配到的第一个元素的值)
 
 // // 或者用箭头函数
@@ -159,10 +159,26 @@ function checkAdult(age) {
 // }) // 10 (返回的是匹配到的第一个元素的值)
 
 // findIndex 方法返回传入一个测试条件（函数）符合条件的数组第一个元素位置
-var a1 = ages.findIndex(checkAdult) // 2 (返回的是匹配到的第一个元素的索引)
+// var a1 = ages.findIndex(checkAdult) // 2 (返回的是匹配到的第一个元素的索引)
 
-// 或者用箭头函数
-var a2 = ages.findIndex(ages => {
-  return ages > 3
-}) // 1 (返回的是匹配到的第一个元素的索引)
-console.log(a1, a2)
+// // 或者用箭头函数
+// var a2 = ages.findIndex(ages => {
+//   return ages > 3
+// }) // 1 (返回的是匹配到的第一个元素的索引)
+// console.log(a1, a2)
+
+// 扁平化 n 维数组
+// Array.flat(n) 是 ES10 扁平化数组的 api， n 表示维度， n 值为 Infiniti 时维度为无限大。
+// let arr1 = [1, [2, 3]].flat(2) // [1, 2, 3]
+// let arr2 = [1, [2, 3, [4, 5]]].flat(3) // [1, 2, 3, 4, 5]
+// console.log(arr1, arr2)
+
+// 利用递归和数组合并方法 concat 实现扁平。
+function flatten(arr) {
+  while (arr.some(item => Array.isArray(item))) {
+    arr = [].concat(...arr)
+  }
+  return arr
+}
+let arr = flatten([1, [2, 3]])
+console.log(arr)
