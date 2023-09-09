@@ -174,11 +174,35 @@
 // console.log(arr1, arr2)
 
 // 利用递归和数组合并方法 concat 实现扁平。
-function flatten(arr) {
-  while (arr.some(item => Array.isArray(item))) {
-    arr = [].concat(...arr)
+// function flatten(arr) {
+//   while (arr.some(item => Array.isArray(item))) {
+//     arr = [].concat(...arr)
+//   }
+//   return arr
+// }
+// let arr = flatten([1, [2, 3]])
+
+// 数组
+// let arr = Array.from(new Set([1, 2, 3, 2, 4])) // [1, 2, 3, 4]
+// let arr = [...new Set([1, 2, 3, 3, 4, 4])] // [1, 2, 3, 4]
+
+// 可以根据双层循环过滤掉重复项
+Array.prototype.distinct = function () {
+  var arr = this,
+    result = [],
+    i,
+    j,
+    len = arr.length
+  for (i = 0; i < len; i++) {
+    for (j = i + 1; j < len; j++) {
+      if (arr[i] === arr[j]) {
+        j = ++i
+      }
+    }
+    result.push(arr[i])
   }
-  return arr
+  return result
 }
-let arr = flatten([1, [2, 3]])
+let arr = [1, 2, 2, 3].distinct() // [1, 2, 3];
+
 console.log(arr)
