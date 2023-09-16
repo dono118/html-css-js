@@ -187,22 +187,39 @@
 // let arr = [...new Set([1, 2, 3, 3, 4, 4])] // [1, 2, 3, 4]
 
 // 可以根据双层循环过滤掉重复项
-Array.prototype.distinct = function () {
-  var arr = this,
-    result = [],
-    i,
-    j,
+// Array.prototype.distinct = function () {
+//   var arr = this,
+//     result = [],
+//     i,
+//     j,
+//     len = arr.length
+//   for (i = 0; i < len; i++) {
+//     for (j = i + 1; j < len; j++) {
+//       if (arr[i] === arr[j]) {
+//         j = ++i
+//       }
+//     }
+//     result.push(arr[i])
+//   }
+//   return result
+// }
+// let arr = [1, 2, 2, 3].distinct() // [1, 2, 3];
+
+// let arr = [1, 2, 3, 4].sort()
+// let arr = [1, 2, 3, 4].sort((a, b) => b - a)
+// 冒泡排序
+Array.prototype.bubleSort = function () {
+  let arr = this,
     len = arr.length
-  for (i = 0; i < len; i++) {
-    for (j = i + 1; j < len; j++) {
-      if (arr[i] === arr[j]) {
-        j = ++i
+  for (let i = 0; i < len; i++) {
+    for (let j = i + 1; j < len; j++) {
+      if (arr[j - 1] > arr[j]) {
+        ;[arr[j - 1], arr[j]] = [arr[j], arr[j - 1]]
       }
     }
-    result.push(arr[i])
   }
-  return result
+  return arr
 }
-let arr = [1, 2, 2, 3].distinct() // [1, 2, 3];
+let arr = [2, 1, 3].bubleSort() // [1, 2, 3]
 
 console.log(arr)
