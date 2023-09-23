@@ -208,18 +208,32 @@
 // let arr = [1, 2, 3, 4].sort()
 // let arr = [1, 2, 3, 4].sort((a, b) => b - a)
 // 冒泡排序
-Array.prototype.bubleSort = function () {
+// Array.prototype.bubleSort = function () {
+//   let arr = this,
+//     len = arr.length
+//   for (let i = 0; i < len; i++) {
+//     for (let j = i + 1; j < len; j++) {
+//       if (arr[j - 1] > arr[j]) {
+//         ;[arr[j - 1], arr[j]] = [arr[j], arr[j - 1]]
+//       }
+//     }
+//   }
+//   return arr
+// }
+// let arr = [2, 1, 3].bubleSort() // [1, 2, 3]
+// 选择排序
+Array.prototype.selectSort = function () {
   let arr = this,
     len = arr.length
   for (let i = 0; i < len; i++) {
-    for (let j = i + 1; j < len; j++) {
-      if (arr[j - 1] > arr[j]) {
-        ;[arr[j - 1], arr[j]] = [arr[j], arr[j - 1]]
+    for (let j = i; j < len; j++) {
+      if (arr[i] > arr[j]) {
+        ;[arr[i], arr[j]] = [arr[j], arr[i]]
       }
     }
   }
   return arr
 }
-let arr = [2, 1, 3].bubleSort() // [1, 2, 3]
+let arr = [1, 3, 2, 4].selectSort() // [1, 2, 3, 4]
 
 console.log(arr)
