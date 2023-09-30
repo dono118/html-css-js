@@ -222,18 +222,47 @@
 // }
 // let arr = [2, 1, 3].bubleSort() // [1, 2, 3]
 // 选择排序
-Array.prototype.selectSort = function () {
-  let arr = this,
-    len = arr.length
-  for (let i = 0; i < len; i++) {
-    for (let j = i; j < len; j++) {
-      if (arr[i] > arr[j]) {
-        ;[arr[i], arr[j]] = [arr[j], arr[i]]
-      }
-    }
-  }
-  return arr
-}
-let arr = [1, 3, 2, 4].selectSort() // [1, 2, 3, 4]
+// Array.prototype.selectSort = function () {
+//   let arr = this,
+//     len = arr.length
+//   for (let i = 0; i < len; i++) {
+//     for (let j = i; j < len; j++) {
+//       if (arr[i] > arr[j]) {
+//         ;[arr[i], arr[j]] = [arr[j], arr[i]]
+//       }
+//     }
+//   }
+//   return arr
+// }
+// let arr = [1, 3, 2, 4].selectSort() // [1, 2, 3, 4]
 
-console.log(arr)
+// 最大值
+// let maxVal = Math.max(...[1, 2, 3, 4]) // 4
+// let maxVal = Math.max.apply(this, [1, 2, 3, 4]) // 4
+// let maxVal = [1, 2, 3, 4].reduce((prev, cur, curIndex, arr) => {
+//   return Math.max(prev, cur)
+// }) // 4
+// console.log(maxVal)
+
+// 求和
+// let sum = [1, 2, 3, 4].reduce((prev, cur, curIndex, arr) => {
+//   return prev + cur
+// }, 0) // 10
+// console.log(sum)
+
+// shift:删除原数组第一项，并返回删除元素的值；如果数组为空则返回undefined
+// var a = [1, 2, 3, 4, 5]
+// var b = a.shift() //a:[2,3,4,5] b:1
+
+// unshift:将参数添加到原数组开头，并返回数组的长度
+// var a = [1, 2, 3, 4, 5]
+// var b = a.unshift(-2, -1) //a:[-2,-1,1,2,3,4,5] b:7
+// （IE6.0下测试返回值总为undefined，FF2.0下测试返回值为7，所以这个方法的返回值不可靠，需要用返回值时可用splice代替本方法来使用。）
+
+// pop:删除原数组最后一项，并返回删除元素的值；如果数组为空则返回undefined
+// var a = [1, 2, 3, 4, 5]
+// var b = a.pop() //a:[1,2,3,4] b:5
+
+// push:将参数添加到原数组末尾，并返回数组的长度
+var a = [1, 2, 3, 4, 5]
+var b = a.push(6, 7) //a:[1,2,3,4,5,6,7] b:7
