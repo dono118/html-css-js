@@ -264,5 +264,26 @@
 // var b = a.pop() //a:[1,2,3,4] b:5
 
 // push:将参数添加到原数组末尾，并返回数组的长度
+// var a = [1, 2, 3, 4, 5]
+// var b = a.push(6, 7) //a:[1,2,3,4,5,6,7] b:7
+
+// concat()可以将两个数组合并在一起，如果是使用ES6语法也可以用扩展运算符…来代替
+// let a = [1, 2, 3, 4, 5]
+// let b = [6, 7, 8, 9]
+// let c = a.concat(b)
+// // 使用 ...
+// let d = [...a, ...b]
+// console.log(c)
+// // [1,2,3,4,5,6,7,8,9]
+// console.log(d)
+// // [1,2,3,4,5,6,7,8,9]
+
+// splice(start,deleteCount,val1,val2,…):从start位置开始删除deleteCount项，并从该位置起插入
 var a = [1, 2, 3, 4, 5]
-var b = a.push(6, 7) //a:[1,2,3,4,5,6,7] b:7
+var b = a.splice(2, 2, 7, 8, 9) //a:[1,2,7,8,9,5] b:[3,4]
+var b = a.splice(0, 1) //同shift
+a.splice(0, 0, -2, -1)
+var b = a.length //同unshift
+var b = a.splice(a.length - 1, 1) //同pop
+a.splice(a.length, 0, 6, 7)
+var b = a.length //同push
