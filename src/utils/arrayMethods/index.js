@@ -279,11 +279,24 @@
 // // [1,2,3,4,5,6,7,8,9]
 
 // splice(start,deleteCount,val1,val2,…):从start位置开始删除deleteCount项，并从该位置起插入
+// var a = [1, 2, 3, 4, 5]
+// var b = a.splice(2, 2, 7, 8, 9) //a:[1,2,7,8,9,5] b:[3,4]
+// var b = a.splice(0, 1) //同shift
+// a.splice(0, 0, -2, -1)
+// var b = a.length //同unshift
+// var b = a.splice(a.length - 1, 1) //同pop
+// a.splice(a.length, 0, 6, 7)
+// var b = a.length //同push
+
+// reverse:将数组反序
+// var a = [1, 2, 3, 4, 5]
+// var b = a.reverse() //a:[5,4,3,2,1] b:[5,4,3,2,1]
+
+// sort(orderfunction):按指定的参数对数组进行排序
+// var a = [1, 2, 3, 4, 5]
+// var b = a.sort() //a:[1,2,3,4,5] b:[1,2,3,4,5]
+
+// slice(start,end):可以截取出数组某部份的元素为一个新的数组，有两个必填的参数，
+// 第一个是起始位置，第二个是结束位置( 操作时数字减1 )
 var a = [1, 2, 3, 4, 5]
-var b = a.splice(2, 2, 7, 8, 9) //a:[1,2,7,8,9,5] b:[3,4]
-var b = a.splice(0, 1) //同shift
-a.splice(0, 0, -2, -1)
-var b = a.length //同unshift
-var b = a.splice(a.length - 1, 1) //同pop
-a.splice(a.length, 0, 6, 7)
-var b = a.length //同push
+var b = a.slice(2, 5) //a:[1,2,3,4,5] b:[3,4,5]
